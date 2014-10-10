@@ -31,5 +31,6 @@ public class LargestCommonSequence {
 		String y = "GTTCCTAATA";  //ans: 6
 		
 		System.out.println(lcs(x, y));
+		//System.out.println(lcs("rabbbit","rabbit"));
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.sidausc.ds.graph.models.DirectedGraph;
 import com.sidausc.ds.graph.models.Edge;
 import com.sidausc.ds.graph.models.Graph;
 import com.sidausc.ds.graph.models.Vertex;
@@ -31,7 +32,7 @@ public class TestDijkstraAlgEngine {
 	    addLane("Edge_9", 4, 9, 502);
 	    addLane("Edge_10", 9, 10, 40);
 	    addLane("Edge_11", 1, 10, 600);
-	    Graph graph = new Graph( nodes, edges);
+	    Graph graph = new DirectedGraph( nodes, edges);
 		return graph;
 	}
 	private void addLane(String laneId, int sourceLocNo, int destLocNo,

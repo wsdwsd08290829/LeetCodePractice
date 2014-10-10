@@ -3,6 +3,7 @@ package com.sidausc.ds.sorting;
 import java.util.Comparator;
 
 public class QuickSort {
+	//k start from 1;
 	public static int quickSearchKthMin(Integer[] arr, int start, int end, int k){
 		
 		if(arr.length == 1) return arr[0];
@@ -67,8 +68,6 @@ public class QuickSort {
 		for(int i: arr){
 			System.out.println(i);
 		}
-		
-		
 		System.out.println(quickSearchKthMin(arr, 0, 4, 4));
 	}
 }
