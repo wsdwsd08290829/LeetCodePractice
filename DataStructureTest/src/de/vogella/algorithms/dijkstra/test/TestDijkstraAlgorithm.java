@@ -1,18 +1,18 @@
 package de.vogella.algorithms.dijkstra.test;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.Test;
 
 import de.vogella.algorithms.dijkstra.engine.DijkstraAlgorithm;
 import de.vogella.algorithms.dijkstra.model.Edge;
 import de.vogella.algorithms.dijkstra.model.Graph;
 import de.vogella.algorithms.dijkstra.model.Vertex;
-
-import org.junit.Test;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class TestDijkstraAlgorithm {
 

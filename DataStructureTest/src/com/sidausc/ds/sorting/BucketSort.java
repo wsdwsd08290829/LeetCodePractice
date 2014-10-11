@@ -1,7 +1,4 @@
 package com.sidausc.ds.sorting;
-
-import java.util.ArrayList;
-
 public class BucketSort {
 	public static void bucketSort(int [] arr){
 		//assume the max is 10
