@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-<<<<<<< HEAD
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-=======
-	<classpathentry excluding="com/sidausc/ds/graph/mintree/PrimMST.java" kind="src" path="src"/>
-	<classpathentry kind="src" path="algs4-data"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/PrincetonLibrary"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Shared"/>
->>>>>>> branch 'master' of https://github.com/wsdwsd08290829/egit.git
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="algs4.jar"/>
+	<classpathentry kind="lib" path="introcs.jar"/>
+	<classpathentry kind="lib" path="stdlib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
