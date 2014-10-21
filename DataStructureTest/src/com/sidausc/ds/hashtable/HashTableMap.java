@@ -1,8 +1,4 @@
 package com.sidausc.ds.hashtable;
-
-
-
-
 /** A hash table with linear probing and the MAD hash function */
 import java.util.Collection;
 import java.util.HashSet;
@@ -31,6 +27,10 @@ public class HashTableMap<K,V> implements Map<K,V> {
 	      catch (ClassCastException ex) { return false; }
 	      return (ent.getKey() == key) && (ent.getValue() == value);
 	    }
+	    @Override
+	    public String toString() {
+	    	return "[" + key + "," + value+ "]";
+	    }
 	  }
 	  protected Entry<K,V> AVAILABLE = new HashEntry<K,V>(null, null); // marker 
 	  protected int n = 0; 		// number of entries in the dictionary
@@ -54,8 +54,10 @@ public class HashTableMap<K,V> implements Map<K,V> {
 	    if (k == null) throw new InvalidKeyException("Invalid key: null.");
 	  }
 	  /** Hash function applying MAD method to default hash code. */
+	  /* hash code + compression function(% capacity)*/
 	  public int hashValue(K key) {
-	    return Math.abs(key.hashCode()*scale + shift) % capacity;
+	   // return Math.abs(key.hashCode()*scale + shift) % capacity;
+		  return 0;
 	  }
 	
 	
@@ -242,5 +244,27 @@ public class HashTableMap<K,V> implements Map<K,V> {
 			s.add(get(key));
 		}
 		return s;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String s = "aaa";
+		for(int i=0;i<10;i++){
+			System.out.println(bucket[i]);
+		}
+		return s;
+	}
+	public static void main(String[] args) {
+		HashTableMap<String, Integer> htm= new HashTableMap<String, Integer>();
+		htm.put("a", 1);
+		htm.put("b", 2);
+		htm.put("c", 3);
+	
+		htm.remove("b");
+		htm.put("c", 1);
+		System.out.println(htm);
+		htm.remove("c");
+		//System.out.println(htm);
+		System.out.println(htm.get("c"));
 	}
 } 

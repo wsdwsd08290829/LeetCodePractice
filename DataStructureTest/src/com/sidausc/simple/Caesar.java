@@ -1,5 +1,7 @@
 package com.sidausc.simple;
 
+import java.util.ArrayList;
+
 /** Class for doing encryption and decryption using the Caesar Cipher. */
 public class Caesar {
   public static final int ALPHASIZE = 26; // English alphabet (uppercase only)
@@ -41,5 +43,7 @@ public class Caesar {
     System.out.println(secret);             // the ciphertext
     secret = cipher.decrypt(secret);
     System.out.println(secret);             // should be plaintext again
+    ArrayList<Integer> a = new ArrayList<Integer>();
+    System.out.println(a.get(3));
   }
 }
