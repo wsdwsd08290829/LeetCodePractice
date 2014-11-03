@@ -8,7 +8,11 @@ import java.util.Stack;
 
 public class PreorderTraversal {
 	public static List<Integer> list = new ArrayList<Integer>();
-
+	/**
+	 * recursive
+	 * @param root
+	 * @return
+	 */
 	public List<Integer> preorderTraversal(TreeNode root) {
 		if (root == null)
 			return list;
@@ -21,7 +25,14 @@ public class PreorderTraversal {
 		}
 		return list;
 	}
-
+	/**
+	 * iteration
+	 * visit node first(add to list)
+	 * process left using queue
+	 * process right using stack
+	 * @param root
+	 * @return
+	 */
 	public List<Integer> preorderTraversal1(TreeNode root) {
 		if (root == null)
 			return list;

@@ -1,18 +1,71 @@
 package leet;
 
 /**
- * @author sidawang 
- * get max profit of multiple transaction(buy sell pair)
- * Alg: greedy
- * Complexity: O(n^2) -> O(n)
+ * @author sidawang
+ * 
+ * 
+ * 
  */
 public class MaxProfit {
+	/******** problem1(one transaction) method1 **********/
 	/**
+	 * save current minSoFar as buy(greedy), then update max, if curr-minSoFar
+	 * is larger
+	 * 
+	 * @param prices
+	 * @return
+	 */
+	public int maxProfit11(int[] prices) {
+		if (prices == null || prices.length == 0)
+			return 0;
+
+		int max = 0;
+		int minSoFar = Integer.MAX_VALUE;
+
+		for (int i = 0; i < prices.length; i++) {
+			if (prices[i] < minSoFar) {
+				minSoFar = prices[i];
+			} else {
+				max = Math.max(max, prices[i] - minSoFar);
+			}
+		}
+		return max;
+	}
+
+	/******** problem1 method2 **********/
+	/**
+	 * similar to longest continuous sum in array; O(n), dynamic programming
+	 * copy： local[i+1]=max(local[i]+prices[i+1]-price[i],0),
+	 * global[i+1]=max(local[i+1],global[i])
+	 * 
+	 * @param prices
+	 * @return
+	 */
+	public int maxProfit12(int[] prices) {
+		if (prices == null || prices.length < 2)
+			return 0;
+
+		int maxGlobal = 0;
+		//save max profit if sell at current day
+		int prevMaxLocal = 0;
+
+		for (int i = 1; i < prices.length; i++) {
+			prevMaxLocal = Math.max(0, prices[i]-prices[i-1]+prevMaxLocal);
+			maxGlobal = Math.max(maxGlobal, prevMaxLocal);
+		}
+		return maxGlobal;
+	}
+
+	/******** problem3(multiple transaction) method1 **********/
+	/**
+	 * get max profit of multiple transaction(buy sell pair) Alg: greedy
+	 * Complexity: O(n^2) -> O(n)
+	 * 
 	 * @param prices
 	 *            : stock price ordered by day(index)
 	 * @return max profit
 	 */
-	public static int maxProfit(int[] prices) {
+	public static int maxProfit31(int[] prices) {
 		if (prices == null || prices.length < 2) {
 			return 0;
 		}
@@ -51,12 +104,12 @@ public class MaxProfit {
 
 	public static void main(String[] args) {
 		int[] prices = { 10, 15, 8, 16, 6, 5, 6 };
-		System.out.println(maxProfit(prices)); // 14
+		System.out.println(maxProfit31(prices)); // 14
 		int[] prices1 = { 10, 15, 18, 8, 16 };
-		System.out.println(maxProfit(prices1)); // 16
+		System.out.println(maxProfit31(prices1)); // 16
 		int[] prices2 = { 10, 15, 13, 18 };
-		System.out.println(maxProfit(prices2));// 10
+		System.out.println(maxProfit31(prices2));// 10
 		int[] prices3 = { 10, 15, 7, 6, 5 };
-		System.out.println(maxProfit(prices3));// 5
+		System.out.println(maxProfit31(prices3));// 5
 	}
 }

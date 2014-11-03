@@ -3,23 +3,11 @@ package leet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-/**
- * @author sidawang Given a set of candidate numbers (C) and a target number
- *         (T), find all unique combinations in C where the candidate numbers
- *         sums to T. The same repeated number may be chosen from C unlimited
- *         number of times. For example, given candidate set 2,3,6,7 and target
- *         7, A solution set is: [7], [2, 2, 3]
- */
-public class CombinationSum {
-	/**
-	 * @param candidates
-	 *            : must be set, no duplicate; The same repeated number may be
-	 *            chosen from C unlimited number of times.
-	 * @param target
-	 * @return
-	 */
+public class CombinationSumII {
 	public static List<List<Integer>> combinationSum(int[] candidates,
 			int target) {
 		Arrays.sort(candidates);
@@ -55,20 +43,27 @@ public class CombinationSum {
 			// }
 			return;
 		}
+		Set<Integer> set = new HashSet<Integer>();
 		for (int i = startIndex; i < candidates.length; i++) {
 			int cand = candidates[i];
+			if (set.contains(cand)) {
+				continue;
+			} else {
+				set.add(cand);
+			}
+
 			tempRes.add(cand);
 			// pass i to not start from beginning for each recursion
 			// thus remove duplicates
-			combinationSum(candidates, target - cand, result, tempRes, i);
+			combinationSum(candidates, target - cand, result, tempRes, i + 1);
 			tempRes.remove(tempRes.size() - 1); // (Object)(Integer)cand
 		}
 		return;
 	}
 
 	public static void main(String[] args) {
-		int[] cands = { 1, 2, 4, 5, 6, 7 };
-		int target = 7;
+		int[] cands = { 10, 1, 2, 7, 6, 1, 5 };
+		int target = 8;
 		System.out.println(combinationSum(cands, target));
 	}
 }

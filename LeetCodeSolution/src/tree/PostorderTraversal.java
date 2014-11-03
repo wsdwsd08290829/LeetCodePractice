@@ -3,17 +3,20 @@ package tree;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
 /**
- * post order visit a tree
- * implement 3 methods to acommplish the task. See each method
+ * post order visit a tree implement 3 methods to acommplish the task. See each
+ * method
+ * 
  * @author sidawang
- *
+ * 
  */
 public class PostorderTraversal {
 	public static List<Integer> valList = new ArrayList<Integer>();
 
 	/**
-	 *  use class field
+	 * recursive, use class field
+	 * 
 	 * @param root
 	 * @return
 	 */
@@ -31,7 +34,7 @@ public class PostorderTraversal {
 	}
 
 	/**
-	 *  use local field
+	 * recursive, use local field
 	 */
 	public static List<Integer> postorderTraversal2(TreeNode root) {
 		List<Integer> valList = new ArrayList<Integer>();
@@ -48,12 +51,12 @@ public class PostorderTraversal {
 	}
 
 	/**
-	 *  use stack, iteration
-	 *  better draw on draft for simple example
+	 * use two stack, iteration better draw on draft for simple example
+	 * 
 	 * @param root
 	 * @return
 	 */
-	
+
 	public static List<Integer> postorderTraversal3(TreeNode root) {
 
 		List<Integer> list = new ArrayList<Integer>();

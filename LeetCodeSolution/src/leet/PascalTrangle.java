@@ -52,6 +52,33 @@ public class PascalTrangle {
 		return row;
 	}
 
+	public static List<List<Integer>> generate(int numRows) {
+		ArrayList<List<Integer>> al = new ArrayList<List<Integer>>();
+		if (numRows == 0)
+			return al;
+		if (numRows >= 1) { // set init state
+			ArrayList<Integer> temp = new ArrayList<Integer>();
+			temp.add(1);
+			al.add(temp);
+		}
+		for (int i = 2; i <= numRows; i++) {
+			ArrayList<Integer> temp = new ArrayList<Integer>();
+			ArrayList<Integer> prev = (ArrayList<Integer>) al
+					.get(al.size() - 1);
+			for (int j = 0; j <= prev.size(); j++) {
+				if (j == 0) { // first
+					temp.add(1);
+				} else if (j == prev.size()) { // last
+					temp.add(1);
+				} else { // others
+					temp.add(prev.get(j - 1) + prev.get(j));
+				}
+			}
+			al.add(temp);
+		}
+		return al;
+	}
+
 	public static void main(String[] args) {
 		System.out.println(factorial(21));
 		System.out.println(factorial(13));
@@ -60,5 +87,9 @@ public class PascalTrangle {
 		System.out.println(pascalTriangleRow(13));
 		System.out.println(pascalTriangleRow(4));
 		System.out.println(pascalTriangleRow(0));
+		System.out.println("---------");
+		System.out.println(generate(0));
+		System.out.println(generate(1));
+		System.out.println(generate(4));
 	}
 }
