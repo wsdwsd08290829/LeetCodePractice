@@ -34,7 +34,7 @@ public class NQueens {
 					// when current col success, next column
 					nQueens(colIndex + 1, place, list);
 				}
-			} //otherwise try next row
+			} // otherwise try next row
 		}
 		// backtrack(col index to previous)
 	}
@@ -73,6 +73,14 @@ public class NQueens {
 		return true;
 	}
 
+	/*********** problem2 ***************/
+	/**
+	 * return how many possible solutions; 1. class field count;2. change
+	 * saveBoard meathod to count++; 3. return count;
+	 * 
+	 * @param args
+	 */
+	// test
 	public static void main(String[] args) {
 		NQueens nq = new NQueens();
 		nq.solveNQueens(4);

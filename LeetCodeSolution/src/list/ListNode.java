@@ -1,13 +1,14 @@
 package list;
 
-
 public class ListNode {
-	int val;
-	ListNode next;
+	public int val;
+	public ListNode next;
+
 	ListNode(int x) {
 		val = x;
 		next = null;
 	}
+
 	public static ListNode createTestList(int[] arr) {
 		ListNode[] lnArr = new ListNode[arr.length];
 		for (int i = 0; i < arr.length; i++) {

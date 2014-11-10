@@ -59,7 +59,7 @@ public class Permutations {
 	}
 
 	/**
-	 * method2:recursive: head
+	 * method2:recursive: head; could remove duplicates
 	 * 
 	 * @param num
 	 * @param start
