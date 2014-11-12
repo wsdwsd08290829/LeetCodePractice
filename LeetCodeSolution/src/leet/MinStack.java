@@ -3,42 +3,80 @@ package leet;
 import java.util.Stack;
 
 public class MinStack {
-	Stack<Integer> stack;
-	Stack<Integer> minStack;
-	int min;
-
-	MinStack() {
-		stack = new Stack<Integer>();
-		minStack = new Stack<Integer>();
-		min = Integer.MAX_VALUE;
-	}
+	private Stack<Integer> stack = new Stack<Integer>();
+	private Stack<Integer> minStack = new Stack<Integer>();
 
 	public void push(int x) {
 		stack.push(x);
-		min = Math.min(min, x);
-		minStack.push(min);
+		if (minStack.isEmpty() || x <= minStack.peek()) {
+			minStack.push(x);
+		}
 	}
 
 	public void pop() {
-		if (!stack.isEmpty()) {
-			stack.pop();
+		// peek throws EmptyStackException donot need check for leet code(donot
+		// process exception check),need for real world
+
+		if (stack.peek().equals(minStack.peek()))
 			minStack.pop();
-			min = minStack.peek();
-		} else {
-			min = Integer.MAX_VALUE;
-		}
+		stack.pop();
 	}
 
 	public int top() {
 		if (!stack.isEmpty()) {
 			return stack.peek();
 		} else {
-			return 0;
+			return Integer.MAX_VALUE;
 		}
 	}
 
 	public int getMin() {
-		return min;
+		if (!stack.isEmpty()) {
+			return minStack.peek();
+		} else {
+			return Integer.MAX_VALUE;
+		}
+	}
+
+	/****** method2 ********/
+	// cread structure Node which contain min and val
+	class MinStack1 {
+		Node top = null;
+
+		public void push(int x) {
+			if (top == null) {
+				top = new Node(x);
+				top.min = x;
+			} else {
+				Node temp = new Node(x);
+				temp.next = top;
+				top = temp;
+				top.min = Math.min(top.next.min, x);
+			}
+		}
+
+		public void pop() {
+			top = top.next;
+			return;
+		}
+
+		public int top() {
+			return top == null ? 0 : top.val;
+		}
+
+		public int getMin() {
+			return top == null ? 0 : top.min;
+		}
+	}
+
+	class Node {
+		int val;
+		int min;
+		Node next;
+
+		public Node(int val) {
+			this.val = val;
+		}
 	}
 
 	public static void main(String[] args) {
