@@ -1,6 +1,7 @@
 package leet;
 
 public class UniquePaths {
+	// TODO use one dimensional array
 	/*********** method 1 *************/
 	/**
 	 * unique paths from upper left to bottom right; dynamic programming,O(n^2)
@@ -37,12 +38,27 @@ public class UniquePaths {
 	}
 
 	/*********** method 2 *************/
+	public int uniquePaths2(int m, int n) {
+		double dom = 1;
+		double dedom = 1;
+		int small = m < n ? m - 1 : n - 1;
+		int big = m < n ? n - 1 : m - 1;
+		System.out.println(big + " " + small);
+		for (int i = 1; i <= small; i++) {
+			dedom *= i;
+			dom *= small + big + 1 - i;
+			System.out.println("dmo" + dom);
+		}
+		return (int) (dom / dedom);
+	}
+
+	/****** method3 ******/
 	/**
 	 * recursion O(n^2); f(m,n) = f(m-1,n) + f(m, n-1); too much stack
 	 * required...
 	 */
 	public static void main(String[] args) {
-		System.out.println(new UniquePaths().uniquePaths(3, 3));
+		System.out.println(new UniquePaths().uniquePaths2(11, 3));
 		System.out.println(new UniquePaths().uniquePaths(1, 1));
 		System.out.println(new UniquePaths().uniquePaths(0, 0));
 		System.out.println(new UniquePaths().uniquePaths(1, 3));

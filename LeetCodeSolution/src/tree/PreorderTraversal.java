@@ -8,8 +8,10 @@ import java.util.Stack;
 
 public class PreorderTraversal {
 	public static List<Integer> list = new ArrayList<Integer>();
+
 	/**
 	 * recursive
+	 * 
 	 * @param root
 	 * @return
 	 */
@@ -25,11 +27,11 @@ public class PreorderTraversal {
 		}
 		return list;
 	}
+
 	/**
-	 * iteration
-	 * visit node first(add to list)
-	 * process left using queue
-	 * process right using stack
+	 * iteration visit node first(add to list) process left using queue process
+	 * right using stack
+	 * 
 	 * @param root
 	 * @return
 	 */
@@ -39,11 +41,11 @@ public class PreorderTraversal {
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 		queue.add(root);
-		while (queue.size() > 0 || stack.size()>0){
-//			System.out.println(queue);
-//			System.out.println(stack);
-//			System.out.println("---");
-			if(queue.size()>0){
+		while (queue.size() > 0 || stack.size() > 0) {
+			// System.out.println(queue);
+			// System.out.println(stack);
+			// System.out.println("---");
+			if (queue.size() > 0) {
 				TreeNode tn = queue.remove();
 				list.add(tn.val);
 				if (tn.left != null) {
@@ -52,7 +54,7 @@ public class PreorderTraversal {
 				if (tn.right != null) {
 					stack.add(tn.right);
 				}
-			}else if(stack.size()>0){
+			} else if (stack.size() > 0) {
 				TreeNode tn = stack.pop();
 				list.add(tn.val);
 				if (tn.left != null) {
@@ -64,6 +66,58 @@ public class PreorderTraversal {
 			}
 		}
 		return list;
+	}
+
+	/******** method3 ********/
+	// http://blog.csdn.net/linhuanmars/article/details/21428647
+	// add when push, do not in pop
+	public ArrayList<Integer> preorderTraversal2(TreeNode root) {
+		ArrayList<Integer> res = new ArrayList<Integer>();
+		if (root == null)
+			return res;
+		LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+		while (root != null || !stack.isEmpty()) {
+			if (root != null) {
+				stack.push(root);
+				res.add(root.val);
+				root = root.left;
+			} else {
+				root = stack.pop();
+				root = root.right;
+			}
+		}
+		return res;
+	}
+
+	/********* method4 **********/
+	// http://blog.csdn.net/linhuanmars/article/details/21428647
+	// constance space, Morris Traversal
+	// better:
+	// http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html
+	public ArrayList<Integer> preorderTraversal3(TreeNode root) {
+		ArrayList<Integer> res = new ArrayList<Integer>();
+		TreeNode cur = root;
+		TreeNode temp = null;
+		while (cur != null) {
+			if (cur.left == null) {
+				res.add(cur.val);
+				cur = cur.right;
+			} else {
+				temp = cur.left;
+				while (temp.right != null && temp.right != cur) {
+					temp = temp.right;
+				}
+				if (temp.right == null) {
+					temp.right = cur;
+					res.add(cur.val); // only difference
+					cur = cur.left;
+				} else {
+					temp.right = null;
+					cur = cur.right;
+				}
+			}
+		}
+		return res;
 	}
 
 	public static void main(String[] args) {

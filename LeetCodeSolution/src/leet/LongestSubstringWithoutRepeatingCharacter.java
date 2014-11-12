@@ -1,6 +1,7 @@
 package leet;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingCharacter {
@@ -37,6 +38,34 @@ public class LongestSubstringWithoutRepeatingCharacter {
 			}
 			map.put(c, i);
 		}
+		return max;
+	}
+
+	/******** method2 *******/
+	// same idea, more clear, maintain a moving window
+	public int lengthOfLongestSubstring1(String s) {
+		if (s == null || s.length() == 0)
+			return 0;
+		HashSet<Character> set = new HashSet<Character>();
+		int max = 0;
+		int walker = 0;
+		int runner = 0;
+		while (runner < s.length()) {
+			if (set.contains(s.charAt(runner))) {
+				if (max < runner - walker) {
+					max = runner - walker;
+				}
+				while (s.charAt(walker) != s.charAt(runner)) {
+					set.remove(s.charAt(walker));
+					walker++;
+				}
+				walker++;
+			} else {
+				set.add(s.charAt(runner));
+			}
+			runner++;
+		}
+		max = Math.max(max, runner - walker);
 		return max;
 	}
 

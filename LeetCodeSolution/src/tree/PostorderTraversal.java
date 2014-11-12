@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+//TODO morris and iteration
+//http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html
+//http://blog.csdn.net/linhuanmars/article/details/22009351
 /**
  * post order visit a tree implement 3 methods to acommplish the task. See each
  * method
@@ -11,6 +14,7 @@ import java.util.Stack;
  * @author sidawang
  * 
  */
+
 public class PostorderTraversal {
 	public static List<Integer> valList = new ArrayList<Integer>();
 
